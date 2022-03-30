@@ -88,11 +88,7 @@ class HomeActivity : AppCompatActivity() {
         return false;
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(requestCode == PERMISSION_REQUEST_ACCESS_LOCATION){
             if(!grantResults.isEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
@@ -103,7 +99,6 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
-
 
     private fun getCity(latitude: Double, longitude:Double):String{
         val geocoder: Geocoder = Geocoder(this, Locale.getDefault())
