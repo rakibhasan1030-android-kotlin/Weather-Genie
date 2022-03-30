@@ -9,6 +9,7 @@ import com.google.gson.Gson
 import rakib.hasan.weatherapp.services.api.VolleySingleton
 import rakib.hasan.weatherapp.services.model.WeatherInfo
 import rakib.hasan.weatherapp.services.utils.Constants
+import java.nio.charset.StandardCharsets
 
 class HomeActivityRepository constructor(context: Context){
     private val TAG: String = HomeActivityRepository::class.java.simpleName
@@ -17,20 +18,16 @@ class HomeActivityRepository constructor(context: Context){
     private val requestQueue = VolleySingleton.getInstance(context).requestQueue
 
     fun getWeatherInfo(city : String) :  MutableLiveData<WeatherInfo>{
-        Log.v("TAG", "HomeActivityRepository <---> getWeatherInfo")
-
         val url  = Constants.getWeatherUrl(city)
-        Log.v(TAG, "URL = $url");
         val stringRequest = StringRequest(Request.Method.GET, url,
             { response ->
                 var gson = Gson()
                 val weatherInfo = gson.fromJson(response, WeatherInfo::class.java)
                 weatherInfoLiveData.postValue(weatherInfo)
-                //Log.v(TAG, "Response : $weatherInfo");
             },
             { error ->
-                //var errorResponse : String = String(error.networkResponse.data, StandardCharsets.UTF_8)
-                Log.v(TAG, "Error Response : $error");
+                var errorResponse = String(error.networkResponse.data, StandardCharsets.UTF_8)
+                Log.v(TAG, "Error Response : $error")
             }
         )
         requestQueue.add(stringRequest)

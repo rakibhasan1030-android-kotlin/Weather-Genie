@@ -31,7 +31,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var locationManager : LocationManager
     private lateinit var homeActivityViewModel : HomeActivityViewModel;
 
-
     companion object{
         private const val PERMISSION_REQUEST_ACCESS_LOCATION = 100;
     }
@@ -80,7 +79,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun getWeatherInfo(city: String) {
-        Log.v("TAG", "HomeActivity <---> getWeatherInfo")
         homeActivityViewModel.getWeatherInfo(city).observe(this, androidx.lifecycle.Observer {
             Log.v("TAG", "INFO = $it")
         })

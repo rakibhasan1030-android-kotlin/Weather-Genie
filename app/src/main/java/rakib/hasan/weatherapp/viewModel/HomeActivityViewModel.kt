@@ -11,7 +11,6 @@ import rakib.hasan.weatherapp.services.repositories.HomeActivityRepository
 class HomeActivityViewModel(application: Application) : AndroidViewModel(application) {
     private val homeActivityRepository : HomeActivityRepository = HomeActivityRepository(application.applicationContext)
     fun getWeatherInfo(city : String) : MutableLiveData<WeatherInfo> {
-        Log.v("TAG", "HomeActivityViewModel <---> getWeatherInfo")
         return homeActivityRepository.getWeatherInfo(city)
     }
 }
