@@ -9,13 +9,18 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import rakib.hasan.weatherapp.databinding.ActivityHomeBinding
+import rakib.hasan.weatherapp.services.model.WeatherInfo
+import rakib.hasan.weatherapp.services.repositories.HomeActivityRepository
+import rakib.hasan.weatherapp.viewModel.HomeActivityViewModel
 import java.util.*
 
 
@@ -24,6 +29,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding : ActivityHomeBinding
     private lateinit var fusedLocationClient : FusedLocationProviderClient
     private lateinit var locationManager : LocationManager
+    private lateinit var homeActivityViewModel : HomeActivityViewModel;
 
 
     companion object{
@@ -36,6 +42,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         binding.homeActivityWeatherCallButton.setOnClickListener(View.OnClickListener { getUserCurrentLocation() })
+        homeActivityViewModel = ViewModelProvider(this)[HomeActivityViewModel::class.java]
     }
 
     private fun getUserCurrentLocation() {
@@ -53,7 +60,9 @@ class HomeActivity : AppCompatActivity() {
                 fusedLocationClient.lastLocation.addOnSuccessListener { location : Location? ->
                         // Got last known location. In some rare situations this can be null.
                     if (location != null){
-                        binding.homeActivityWeatherTv.setText(getCity(location.latitude, location.longitude))
+                        var city = getCity(location.latitude, location.longitude)
+                        binding.homeActivityWeatherTv.setText(city)
+                        getWeatherInfo(city);
                     }else{
                         Toast.makeText(applicationContext, "Sorry, can't find your location!", Toast.LENGTH_LONG).show()
                     }
@@ -68,6 +77,13 @@ class HomeActivity : AppCompatActivity() {
             //request permissions
             requestPermission()
         }
+    }
+
+    private fun getWeatherInfo(city: String) {
+        Log.v("TAG", "HomeActivity <---> getWeatherInfo")
+        homeActivityViewModel.getWeatherInfo(city).observe(this, androidx.lifecycle.Observer {
+            Log.v("TAG", "INFO = $it")
+        })
     }
 
     private fun isUserLocationEnabled(): Boolean {
