@@ -21,7 +21,7 @@ class HomeActivityRepository constructor(context: Context){
         val url  = Constants.getWeatherUrl(city)
         val stringRequest = StringRequest(Request.Method.GET, url,
             { response ->
-                var gson = Gson()
+                val gson = Gson()
                 val weatherInfo = gson.fromJson(response, WeatherInfo::class.java)
                 weatherInfoLiveData.postValue(weatherInfo)
             },
@@ -33,5 +33,4 @@ class HomeActivityRepository constructor(context: Context){
         requestQueue.add(stringRequest)
         return weatherInfoLiveData
     }
-
 }
