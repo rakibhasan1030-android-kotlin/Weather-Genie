@@ -40,7 +40,7 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        binding.homeActivityWeatherCallButton.setOnClickListener(View.OnClickListener { getUserCurrentLocation() })
+        //binding.homeActivityWeatherCallButton.setOnClickListener(View.OnClickListener { getUserCurrentLocation() })
         homeActivityViewModel = ViewModelProvider(this)[HomeActivityViewModel::class.java]
     }
 
@@ -60,7 +60,7 @@ class HomeActivity : AppCompatActivity() {
                         // Got last known location. In some rare situations this can be null.
                     if (location != null){
                         var city = getCity(location.latitude, location.longitude)
-                        binding.homeActivityWeatherTv.setText(city)
+                        //binding.homeActivityWeatherTv.setText(city)
                         getWeatherInfo(city);
                     }else{
                         Toast.makeText(applicationContext, "Sorry, can't find your location!", Toast.LENGTH_LONG).show()
