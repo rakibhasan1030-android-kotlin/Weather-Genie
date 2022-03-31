@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso
 import rakib.hasan.weatherapp.R
 import rakib.hasan.weatherapp.databinding.ActivityHomeBinding
 import rakib.hasan.weatherapp.services.model.Current
+import rakib.hasan.weatherapp.services.model.Hourly
 import rakib.hasan.weatherapp.services.utils.Constants
 import rakib.hasan.weatherapp.viewModel.HomeActivityViewModel
 import java.text.DecimalFormat
@@ -101,12 +102,13 @@ class HomeActivity : AppCompatActivity() {
     private fun getWeatherInfo(latitude: Double, longitude: Double) {
         homeActivityViewModel.getWeatherInfo(latitude, longitude).observe(this, Observer { t ->
             val current : Current? = t.current
+            val hourly : ArrayList<Hourly> = t.hourly
             setCurrentWeatherData(current);
-            setHourlyForeCastData();
+            setHourlyForeCastData(hourly);
         })
     }
 
-    private fun setHourlyForeCastData() {
+    private fun setHourlyForeCastData(hourly: ArrayList<Hourly>) {
 
     }
 
