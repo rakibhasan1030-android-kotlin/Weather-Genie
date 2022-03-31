@@ -17,8 +17,8 @@ class HomeActivityRepository constructor(context: Context){
     var weatherInfoLiveData : MutableLiveData<WeatherInfo> = MutableLiveData()
     private val requestQueue = VolleySingleton.getInstance(context).requestQueue
 
-    fun getWeatherInfo(city : String) :  MutableLiveData<WeatherInfo>{
-        val url  = Constants.getWeatherUrl(city)
+    fun getWeatherInfo(latitude: Double, longitude: Double) :  MutableLiveData<WeatherInfo>{
+        val url  = Constants.getWeatherUrl(latitude, longitude)
         val stringRequest = StringRequest(Request.Method.GET, url,
             { response ->
                 val gson = Gson()

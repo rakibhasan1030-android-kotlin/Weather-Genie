@@ -40,6 +40,7 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        getUserCurrentLocation()
         //binding.homeActivityWeatherCallButton.setOnClickListener(View.OnClickListener { getUserCurrentLocation() })
         homeActivityViewModel = ViewModelProvider(this)[HomeActivityViewModel::class.java]
     }
@@ -59,9 +60,7 @@ class HomeActivity : AppCompatActivity() {
                 fusedLocationClient.lastLocation.addOnSuccessListener { location : Location? ->
                         // Got last known location. In some rare situations this can be null.
                     if (location != null){
-                        var city = getCity(location.latitude, location.longitude)
-                        //binding.homeActivityWeatherTv.setText(city)
-                        getWeatherInfo(city);
+                        getWeatherInfo(location.latitude, location.longitude);
                     }else{
                         Toast.makeText(applicationContext, "Sorry, can't find your location!", Toast.LENGTH_LONG).show()
                     }
@@ -78,8 +77,8 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun getWeatherInfo(city: String) {
-        homeActivityViewModel.getWeatherInfo(city).observe(this, androidx.lifecycle.Observer {
+    private fun getWeatherInfo(latitude: Double, longitude: Double) {
+        homeActivityViewModel.getWeatherInfo(latitude, longitude).observe(this, androidx.lifecycle.Observer {
             Log.v("TAG", "INFO = $it")
         })
     }
@@ -114,7 +113,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun getCity(latitude: Double, longitude:Double):String{
+    /*private fun getCity(latitude: Double, longitude:Double):String{
         val geocoder: Geocoder = Geocoder(this, Locale.getDefault())
 
         val addresses: List<Address> = geocoder.getFromLocation(latitude, longitude, 1) // Here 1 represent max location result to returned, by documents it recommended 1 to 5
@@ -126,6 +125,6 @@ class HomeActivity : AppCompatActivity() {
         //val postalCode: String = addresses[0].getPostalCode()
         //val knownName: String = addresses[0].getFeatureName() // Only if available else return NULL
         return addresses[0].locality;
-    }
+    }*/
 
 }

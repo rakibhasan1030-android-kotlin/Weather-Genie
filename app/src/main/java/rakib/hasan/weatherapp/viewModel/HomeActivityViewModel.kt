@@ -10,7 +10,7 @@ import rakib.hasan.weatherapp.services.repositories.HomeActivityRepository
 
 class HomeActivityViewModel(application: Application) : AndroidViewModel(application) {
     private val homeActivityRepository : HomeActivityRepository = HomeActivityRepository(application.applicationContext)
-    fun getWeatherInfo(city : String) : MutableLiveData<WeatherInfo> {
-        return homeActivityRepository.getWeatherInfo(city)
+    fun getWeatherInfo(latitude: Double, longitude: Double) : MutableLiveData<WeatherInfo> {
+        return homeActivityRepository.getWeatherInfo(latitude, longitude)
     }
 }

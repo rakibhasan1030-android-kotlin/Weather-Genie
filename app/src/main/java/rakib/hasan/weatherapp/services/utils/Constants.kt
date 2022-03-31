@@ -7,16 +7,15 @@ class Constants {
 
 
     //TOMORROW ----------------------------
-    //https://api.openweathermap.org/data/2.5/weather?lat=23.7743889&lon=90.3669191&appid=3d6c443f18312d21ac8146de13fc5c98
+    //https://api.openweathermap.org/data/2.5/onecall?lat=23.7743889&lon=90.3669191&appid=3d6c443f18312d21ac8146de13fc5c98&units=imperial
 
     companion object{
-        val WEATHER_API_BASE_URL = "http://api.weatherstack.com"
-        val WEATHER_API_KEY = "77586bd9deb82ce6d2ae26569cf6130d"
+        val WEATHER_API_BASE_URL = "https://api.openweathermap.org"
+        val WEATHER_API_KEY = "3d6c443f18312d21ac8146de13fc5c98"
 
-        fun getWeatherUrl(city : String) : String{
-            return "$WEATHER_API_BASE_URL/current?access_key=$WEATHER_API_KEY&query=$city";
+        fun getWeatherUrl(latitude:Double, longitude : Double) : String{
+            return "$WEATHER_API_BASE_URL/data/2.5/onecall?lat=$latitude&lon=$longitude&appid=$WEATHER_API_KEY&units=imperial"
         }
-
     }
 
 }
