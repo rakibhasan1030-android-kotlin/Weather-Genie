@@ -14,11 +14,11 @@ import java.nio.charset.StandardCharsets
 class HomeActivityRepository constructor(context: Context){
     private val TAG: String = HomeActivityRepository::class.java.simpleName
 
-    var weatherInfoLiveData : MutableLiveData<WeatherInfo> = MutableLiveData()
+    private var weatherInfoLiveData : MutableLiveData<WeatherInfo> = MutableLiveData()
     private val requestQueue = VolleySingleton.getInstance(context).requestQueue
 
     fun getWeatherInfo(latitude: Double, longitude: Double) :  MutableLiveData<WeatherInfo>{
-        val url  = Constants.getWeatherUrl(latitude, longitude)
+        val url  = Constants.getApiUrl(latitude, longitude)
         val stringRequest = StringRequest(Request.Method.GET, url,
             { response ->
                 val gson = Gson()
@@ -33,4 +33,5 @@ class HomeActivityRepository constructor(context: Context){
         requestQueue.add(stringRequest)
         return weatherInfoLiveData
     }
+
 }
