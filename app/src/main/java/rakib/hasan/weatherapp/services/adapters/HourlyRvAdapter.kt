@@ -24,12 +24,10 @@ class HourlyRvAdapter(private val context: Context, private val hourlyList : Arr
         Picasso.get()
             .load(hourlyList[position].weather[0].icon?.let { Constants.getImageApiUrl(it) })
             .into(holder.iconIv);
-        holder.timeTv.text = "12:52 PM"
-
+        holder.timeTv.text = Constants.unixToTimeConvert(hourlyList[position].dt.toString())
         holder.tempTv.text = hourlyList[position].temp?.roundToInt().toString() + context.resources.getString(R.string.degree_celsius)
         holder.mainWeatherTv.text = hourlyList[position].weather[0].main
         holder.weatherDescTv.text = hourlyList[position].weather[0].description
-
     }
 
     override fun getItemCount(): Int {

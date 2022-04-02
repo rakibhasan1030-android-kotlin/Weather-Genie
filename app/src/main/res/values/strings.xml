@@ -5,12 +5,10 @@
     <string name="degree_celsius">℃</string>
     <string name="fahrenheit">\u2109</string>
     <string name="feels_like">Feels like</string>
-    <string name="wind_unit">mph S</string>
+    <string name="wind_unit">mph</string>
     <string name="pressure_unit">inHg</string>
     <string name="visibility_unit">mi</string>
     <string name="percentage">%</string>
-
-
 
 
     <string name="wind">Wind:</string>
@@ -29,4 +27,8 @@
     <string name="dhaka">Dhaka</string>
     <string name="comma">,</string>
     <string name="dhaka_division">Dhaka Division</string>
+    <string name="sunrise_at">Sunrise at</string>
+    <string name="sunset_at">Sunset at</string>
+
+
 </resources>

@@ -4,6 +4,7 @@ import android.content.Context
 import android.location.Address
 import android.location.Geocoder
 import android.util.Log
+import java.text.SimpleDateFormat
 import java.util.*
 
 class Constants {
@@ -49,6 +50,18 @@ class Constants {
             // Log.v("TAG", "country = $country")
             return list;
         }
+
+        public fun unixToDateConvert(date : String) : String{
+            val d = Date(date.toLong() * 1000)
+            val sdf = SimpleDateFormat("dd/MMM/yyyy")
+            return sdf.format(d);
+        }
+        public fun unixToTimeConvert(date : String) : String{
+            val d = Date(date.toLong() * 1000)
+            val sdf = SimpleDateFormat("hh:mm a")
+            return sdf.format(d);
+        }
+
 
     }
 

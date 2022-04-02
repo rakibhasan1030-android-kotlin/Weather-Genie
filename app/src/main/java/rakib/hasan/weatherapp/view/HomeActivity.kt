@@ -22,6 +22,7 @@ import rakib.hasan.weatherapp.R
 import rakib.hasan.weatherapp.databinding.ActivityHomeBinding
 import rakib.hasan.weatherapp.services.adapters.HourlyRvAdapter
 import rakib.hasan.weatherapp.services.model.Current
+import rakib.hasan.weatherapp.services.model.Daily
 import rakib.hasan.weatherapp.services.model.Hourly
 import rakib.hasan.weatherapp.services.utils.Constants
 import rakib.hasan.weatherapp.viewModel.HomeActivityViewModel
@@ -95,7 +96,7 @@ class HomeActivity : AppCompatActivity() {
             binding.activityHomeUserDivisionTv.text = location[1]
         }else binding.activityHomeUserDivisionTv.visibility = View.GONE
 
-        if(location[0] != null && location[1] != null){
+        if(location[0] != null || location[1] != null){
             binding.activityHomeLocationIv.visibility = View.VISIBLE
         } else binding.activityHomeLocationIv.visibility = View.GONE
 
@@ -105,9 +106,15 @@ class HomeActivity : AppCompatActivity() {
         homeActivityViewModel.getWeatherInfo(latitude, longitude).observe(this, Observer { t ->
             val current : Current? = t.current
             val hourly : ArrayList<Hourly> = t.hourly
+            val daily : ArrayList<Daily> = t.daily
             setCurrentWeatherData(current);
             setHourlyForeCastData(hourly);
+            setDailyForeCastData(daily);
         })
+    }
+
+    private fun setDailyForeCastData(daily: ArrayList<Daily>) {
+        //Constants.unixDateConvert("")
     }
 
     private fun setHourlyForeCastData(hourly: ArrayList<Hourly>) {
@@ -120,6 +127,15 @@ class HomeActivity : AppCompatActivity() {
     private fun setCurrentWeatherData(current: Current?) {
         if (current != null) {
             val imageUrl : String? = current.weather[0].icon?.let { Constants.getImageApiUrl(it) };
+
+            binding.activityHomeCurrentDateTv.text = Constants.unixToTimeConvert(current.dt.toString())
+            binding.activityHomeCurrentSunriseTimeTv.text =applicationContext.getString(R.string.sunrise_at) + " " +   Constants.unixToTimeConvert(current.sunrise.toString())
+            //Picasso.get().load(Constants.getImageApiUrl("01d")).into(binding.activityHomeCurrentSunriseIconIv);
+            binding.activityHomeCurrentSunsetTimeTv.text = applicationContext.getString(R.string.sunset_at) + " " +  Constants.unixToTimeConvert(current.sunset.toString())
+            //Picasso.get().load(Constants.getImageApiUrl("01n")).into(binding.activityHomeCurrentSunsetIconIv);
+
+            binding.activityHomeCurrentDateTv.text = Constants.unixToTimeConvert(current.dt.toString())
+
             if (imageUrl != null){
                 Log.v("imageUrl", imageUrl);
                 binding.activityHomeCurrentWeatherDescIv.visibility = View.VISIBLE
@@ -133,13 +149,7 @@ class HomeActivity : AppCompatActivity() {
                 binding.activityHomeCurrentWeatherMainTv.visibility = View.VISIBLE
                 binding.activityHomeCurrentWeatherMainTv.text = mainWeather
             }else binding.activityHomeCurrentWeatherMainTv.visibility = View.GONE
-
-            val weatherDesc : String? = current.weather[0].description
-            if (weatherDesc != null){
-                binding.activityHomeCurrentWeatherDescTv.visibility = View.VISIBLE
-                binding.activityHomeCurrentWeatherDescTv.text = weatherDesc
-            }else binding.activityHomeCurrentWeatherDescTv.visibility = View.GONE
-
+//
             val currentTemp : String? = current.temp?.roundToInt()?.toString()
             if (currentTemp != null){
                 binding.activityHomeCurrentTempTv.visibility = View.VISIBLE
@@ -176,7 +186,7 @@ class HomeActivity : AppCompatActivity() {
             binding.activityHomeCurrentPressureContainer.visibility = View.VISIBLE
             binding.activityHomeCurrentPressureValueTv.text = pressure + applicationContext.getString(R.string.pressure_unit)
 
-            val visibility : String = ((current.visibility?.div(1.609))?.div(1000))?.roundToInt().toString() //1 mi = 1.609 km
+            val visibility : String = ((current.visibility?.div(1.609))?.div(1000))?.roundToInt().toString() // 1 mi = 1.609 km
             binding.activityHomeCurrentVisibilityContainer.visibility = View.VISIBLE
             binding.activityHomeCurrentVisibilityValueTv.text = visibility + applicationContext.getString(R.string.visibility_unit)
 
