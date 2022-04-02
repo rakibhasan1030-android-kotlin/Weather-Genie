@@ -21,7 +21,7 @@
     <string name="uv_index_value">4.8</string>
     <string name="dhaka_dhaka_division">Dhaka, Dhaka Division</string>
     <string name="pressure">Pressure:</string>
-    <string name="pressure_value">29.68inHg</string>
+    <string name="pressure_value">29inHg</string>
     <string name="visibility">Visibility:</string>
     <string name="visibility_value">2.5mi</string>
     <string name="dew_point">Dew point:</string>

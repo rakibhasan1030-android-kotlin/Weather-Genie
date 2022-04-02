@@ -14,11 +14,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.squareup.picasso.Picasso
 import rakib.hasan.weatherapp.R
 import rakib.hasan.weatherapp.databinding.ActivityHomeBinding
+import rakib.hasan.weatherapp.services.adapters.HourlyRvAdapter
 import rakib.hasan.weatherapp.services.model.Current
 import rakib.hasan.weatherapp.services.model.Hourly
 import rakib.hasan.weatherapp.services.utils.Constants
@@ -109,7 +111,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setHourlyForeCastData(hourly: ArrayList<Hourly>) {
-
+        binding.activityHomeHourlyForecasetRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.activityHomeHourlyForecasetRv.setHasFixedSize(true)
+        val hourlyRvAdapter : HourlyRvAdapter = HourlyRvAdapter(this, hourly)
+        binding.activityHomeHourlyForecasetRv.adapter = hourlyRvAdapter
     }
 
     private fun setCurrentWeatherData(current: Current?) {
@@ -165,25 +170,19 @@ class HomeActivity : AppCompatActivity() {
                 binding.activityHomeCurrentUvIndexValueTv.text = uvi
             }else binding.activityHomeCurrentUvIndexContainer.visibility = View.GONE
 
-            val p : Double? = (current.pressure?.times(0.02953)) //1 hpa = 0.02953 inhg
+            val p : Int? = (current.pressure?.times(0.02953))?.roundToInt() //1 hpa = 0.02953 inhg
             val df = DecimalFormat("#.##")
             val pressure = df.format(p).toString()
-            if (pressure != null){
-                binding.activityHomeCurrentPressureContainer.visibility = View.VISIBLE
-                binding.activityHomeCurrentPressureValueTv.text = pressure + applicationContext.getString(R.string.pressure_unit)
-            }else binding.activityHomeCurrentPressureContainer.visibility = View.GONE
+            binding.activityHomeCurrentPressureContainer.visibility = View.VISIBLE
+            binding.activityHomeCurrentPressureValueTv.text = pressure + applicationContext.getString(R.string.pressure_unit)
 
-            val visibility : String? = ((current.visibility?.div(1.609))?.div(1000))?.roundToInt().toString() //1 mi = 1.609 km
-            if (pressure != null){
-                binding.activityHomeCurrentVisibilityContainer.visibility = View.VISIBLE
-                binding.activityHomeCurrentVisibilityValueTv.text = visibility + applicationContext.getString(R.string.visibility_unit)
-            }else binding.activityHomeCurrentVisibilityContainer.visibility = View.GONE
+            val visibility : String = ((current.visibility?.div(1.609))?.div(1000))?.roundToInt().toString() //1 mi = 1.609 km
+            binding.activityHomeCurrentVisibilityContainer.visibility = View.VISIBLE
+            binding.activityHomeCurrentVisibilityValueTv.text = visibility + applicationContext.getString(R.string.visibility_unit)
 
-            val dewPoint : String? = current.dewPoint?.toString()
-            if (pressure != null){
-                binding.activityHomeCurrentDewPointContainer.visibility = View.VISIBLE
-                binding.activityHomeCurrentDewPointValueTv.text = dewPoint + applicationContext.getString(R.string.degree_celsius)
-            }else binding.activityHomeCurrentDewPointContainer.visibility = View.GONE
+            val dewPoint : String? = current.dewPoint?.roundToInt()?.toString()
+            binding.activityHomeCurrentDewPointContainer.visibility = View.VISIBLE
+            binding.activityHomeCurrentDewPointValueTv.text = dewPoint + applicationContext.getString(R.string.degree_celsius)
         }
     }
 
