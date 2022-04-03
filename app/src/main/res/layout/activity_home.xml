@@ -195,6 +195,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:elevation="8dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
@@ -413,21 +414,21 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/activity_home_hourly_forecaset_rv"
+        android:id="@+id/activity_home_hourly_forecast_rv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_home_current_weather_others_info_container" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/activity_home_hourly_future_days_forecast_rv"
+    <androidx.viewpager2.widget.ViewPager2
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_home_hourly_forecaset_rv" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_home_hourly_forecast_rv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
