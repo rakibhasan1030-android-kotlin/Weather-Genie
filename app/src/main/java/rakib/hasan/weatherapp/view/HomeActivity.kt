@@ -118,10 +118,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setHourlyForeCastData(hourly: ArrayList<Hourly>) {
-        binding.activityHomeHourlyForecasetRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.activityHomeHourlyForecasetRv.setHasFixedSize(true)
+        binding.activityHomeHourlyForecastRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.activityHomeHourlyForecastRv.setHasFixedSize(true)
         val hourlyRvAdapter : HourlyRvAdapter = HourlyRvAdapter(this, hourly)
-        binding.activityHomeHourlyForecasetRv.adapter = hourlyRvAdapter
+        binding.activityHomeHourlyForecastRv.adapter = hourlyRvAdapter
     }
 
     private fun setCurrentWeatherData(current: Current?) {
