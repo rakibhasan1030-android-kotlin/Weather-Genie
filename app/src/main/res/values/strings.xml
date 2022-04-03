@@ -12,17 +12,23 @@
 
 
     <string name="wind">Wind:</string>
+    <string name="wind_">Wind</string>
     <string name="wind_value">13.8mph SSW</string>
     <string name="humidity">Humidity:</string>
+    <string name="humidity_">Humidity</string>
     <string name="humidity_value">43%</string>
-    <string name="uv_index">UV index</string>
+    <string name="uv_index">UV index:</string>
+    <string name="uv_index_">UV index</string>
     <string name="uv_index_value">4.8</string>
     <string name="dhaka_dhaka_division">Dhaka, Dhaka Division</string>
     <string name="pressure">Pressure:</string>
+    <string name="pressure_">Pressure</string>
     <string name="pressure_value">29inHg</string>
     <string name="visibility">Visibility:</string>
+    <string name="visibility_">Visibility</string>
     <string name="visibility_value">2.5mi</string>
     <string name="dew_point">Dew point:</string>
+    <string name="dew_point_">Dew point</string>
     <string name="dew_point_value">69F</string>
     <string name="dhaka">Dhaka</string>
     <string name="comma">,</string>

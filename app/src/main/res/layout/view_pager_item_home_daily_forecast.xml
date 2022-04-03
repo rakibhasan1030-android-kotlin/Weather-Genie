@@ -4,9 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vp_item_home_daily_forecast_temp_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -14,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/vp_item_home_daily_weather_main_tv"
+            android:id="@+id/vp_item_home_daily_forecast_weather_main_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Haze"
@@ -22,32 +23,277 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/vp_item_home_daily_weather_description_tv"
+            android:id="@+id/vp_item_home_daily_forecast_weather_description_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Haze"
-            app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_weather_main_tv"
-            app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_weather_main_tv" />
+            app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_weather_main_tv"
+            app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_weather_main_tv" />
 
         <ImageView
-            android:id="@+id/vp_item_home_daily_weather_description_iv"
+            android:id="@+id/vp_item_home_daily_forecast_weather_description_iv"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_weather_temp_tv"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_weather_temp_tv"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_weather_temp_tv" />
+            app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_weather_temp_tv" />
 
         <TextView
-            android:id="@+id/vp_item_home_daily_weather_temp_tv"
+            android:id="@+id/vp_item_home_daily_forecast_weather_temp_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:text="65F"
-            app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_weather_description_tv"
-            app:layout_constraintEnd_toStartOf="@+id/vp_item_home_daily_weather_description_iv"
-            app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_weather_main_tv" />
+            app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_weather_description_tv"
+            app:layout_constraintEnd_toStartOf="@+id/vp_item_home_daily_forecast_weather_description_iv"
+            app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_weather_main_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/vp_item_home_daily_forecast_separator_one"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/shadow_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_temp_container" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vp_item_home_daily_forecast_wind_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/vp_item_home_daily_forecast_separator_one"
+        app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_separator_one"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_separator_one">
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_wind_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/wind_"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_wind_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wind_value"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_wind_header_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_wind_header_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/vp_item_home_daily_forecast_separator_two"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/shadow_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_wind_container" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vp_item_home_daily_forecast_humidity_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/vp_item_home_daily_forecast_separator_two"
+        app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_separator_two"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_separator_two">
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_humidity_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/humidity_"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_humidity_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/humidity_value"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_humidity_header_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_humidity_header_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/vp_item_home_daily_forecast_separator_three"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/shadow_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_humidity_container" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vp_item_home_daily_forecast_uv_index_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/vp_item_home_daily_forecast_separator_three"
+        app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_separator_three"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_separator_three">
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_uv_index_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/uv_index_"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_uv_index_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/uv_index_value"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_uv_index_header_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_uv_index_header_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/vp_item_home_daily_forecast_separator_four"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/shadow_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_uv_index_container" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vp_item_home_daily_forecast_pressure_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_separator_four">
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_pressure_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/pressure_"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_pressure_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pressure_value"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_pressure_header_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_pressure_header_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/vp_item_home_daily_forecast_separator_five"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/shadow_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_pressure_container" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vp_item_home_daily_forecast_visibility_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/vp_item_home_daily_forecast_separator_five"
+        app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_separator_five"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_separator_five">
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_visibility_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/visibility"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_visibility_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/visibility_value"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_visibility_header_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_visibility_header_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/vp_item_home_daily_forecast_separator_six"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/shadow_gray"
+        app:layout_constraintEnd_toEndOf="@+id/vp_item_home_daily_forecast_visibility_container"
+        app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_visibility_container"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_visibility_container" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vp_item_home_daily_forecast_dew_point_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/vp_item_home_daily_forecast_separator_six"
+        app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_separator_six"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_separator_six">
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_dew_point_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/dew_point"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_dew_point_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dew_point_value"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_dew_point_header_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_dew_point_header_tv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
