@@ -16,7 +16,7 @@ import kotlin.math.roundToInt
 class HourlyRvAdapter(private val context: Context, private val hourlyList : ArrayList<Hourly>) : RecyclerView.Adapter<HourlyRvAdapter.HourlyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HourlyViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.rv_item_hourly, parent, false);
+        val view = LayoutInflater.from(context).inflate(R.layout.rv_item_home_hourly_forecast, parent, false);
         return HourlyViewHolder(view);
     }
 
