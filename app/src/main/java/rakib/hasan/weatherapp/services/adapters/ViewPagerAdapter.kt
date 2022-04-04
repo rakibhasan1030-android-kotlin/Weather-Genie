@@ -27,9 +27,8 @@ class ViewPagerAdapter(private val context: Context, private val dailyList: Arra
 
     override fun onBindViewHolder(holder: ViewPagerAdapter.ViewPagerViewHolder, position: Int) {
         val daily: Daily = dailyList[position]
-        Picasso.get().load(daily.weather[0].icon?.let { Constants.getImageApiUrl(it) })
-            .into(holder.tempIv)
-        holder.tempTv.text = daily.temp?.max.toString()
+        Picasso.get().load(daily.weather[0].icon?.let { Constants.getImageApiUrl(it) }).into(holder.tempIv)
+        holder.tempTv.text = daily.temp?.max?.roundToInt()?.toString() + context.applicationContext.resources.getString(R.string.degree_celsius)
         holder.tempMainTv.text = daily.weather[0].main
         holder.tempDescriptionTv.text = daily.weather[0].description
         holder.windTv.text =
@@ -37,8 +36,8 @@ class ViewPagerAdapter(private val context: Context, private val dailyList: Arra
         holder.humidityTv.text =
             daily.humidity.toString() + context.resources.getString(R.string.percentage)
         holder.uvIndexTv.text = daily.uvi.toString()
-        holder.pressureTv.text = Constants.getFormattedPressure(daily.pressure)
-        holder.dewPointTv.text = daily.dewPoint?.roundToInt()?.toString()
+        holder.pressureTv.text = Constants.getFormattedPressure(daily.pressure) + context.applicationContext.resources.getString(R.string.pressure_unit)
+        holder.dewPointTv.text = daily.dewPoint?.roundToInt()?.toString() + context.applicationContext.resources.getString(R.string.degree_celsius)
         holder.sunriseTv.text = daily.sunrise?.toString()?.let { Constants.unixToTimeConvert(it) }
         holder.sunsetTv.text = daily.sunset?.toString()?.let { Constants.unixToTimeConvert(it) }
     }
