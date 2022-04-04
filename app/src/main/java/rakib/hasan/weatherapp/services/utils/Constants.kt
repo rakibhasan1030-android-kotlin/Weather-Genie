@@ -53,9 +53,15 @@ class Constants {
             return list;
         }
 
-        public fun unixToDateConvert(date : String) : String{
+        public fun unixToDateConvert(date: Int) : String{
             val d = Date(date.toLong() * 1000)
-            val sdf = SimpleDateFormat("dd/MMM/yyyy")
+            val sdf = SimpleDateFormat("d\nEEE")
+            return sdf.format(d);
+        }
+
+        public fun unixToDateConvertFullDate(date: Int) : String{
+            val d = Date(date.toLong() * 1000)
+            val sdf = SimpleDateFormat("EEE, MMM d")
             return sdf.format(d);
         }
 

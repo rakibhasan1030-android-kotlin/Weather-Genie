@@ -8,7 +8,9 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
 import rakib.hasan.weatherapp.R
 import rakib.hasan.weatherapp.databinding.ActivityHomeBinding
@@ -28,7 +31,6 @@ import rakib.hasan.weatherapp.services.model.Daily
 import rakib.hasan.weatherapp.services.model.Hourly
 import rakib.hasan.weatherapp.services.utils.Constants
 import rakib.hasan.weatherapp.viewModel.HomeActivityViewModel
-import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
 class HomeActivity : AppCompatActivity() {
@@ -50,6 +52,7 @@ class HomeActivity : AppCompatActivity() {
         getUserCurrentLocation()
         //binding.homeActivityWeatherCallButton.setOnClickListener(View.OnClickListener { getUserCurrentLocation() })
         homeActivityViewModel = ViewModelProvider(this)[HomeActivityViewModel::class.java]
+
     }
 
     private fun getUserCurrentLocation() {
@@ -68,8 +71,7 @@ class HomeActivity : AppCompatActivity() {
                         // Got last known location. In some rare situations this can be null.
                     if (location != null){
                         getWeatherInfo(location.latitude, location.longitude)
-                        val location = Constants.getUserLocation(applicationContext, 22.5932649, 89.3069386)
-                        setLocation(location)
+                        setLocation(Constants.getUserLocation(applicationContext, location.latitude, location.longitude))
                     }else{
                         Toast.makeText(applicationContext, "Sorry, can't find your location!", Toast.LENGTH_LONG).show()
                     }
@@ -87,6 +89,9 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setLocation(location: List<String?>) {
+
+        Log.v("setLocation", location[0] + "   |   " + location[1])
+
         if(location[0] != null){
             binding.activityHomeUserCityTv.visibility = View.VISIBLE
             binding.activityHomeUserCityTv.text = location[0] + ","
@@ -119,6 +124,12 @@ class HomeActivity : AppCompatActivity() {
         val viewPagerAdapter = ViewPagerAdapter(applicationContext, daily)
         binding.activityHomeDailyForecastViewpager2.adapter = viewPagerAdapter
         binding.activityHomeDailyForecastViewpager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+        TabLayoutMediator(binding.activityHomeDailyForecastTabLayout, binding.activityHomeDailyForecastViewpager2){ tab , position ->
+            val date : Int? = daily[position].dt
+            tab.text = date?.let { Constants.unixToDateConvert(it) }
+            Log.v("DATE", "Date  ${date?.let { Constants.unixToDateConvert(it) }}")
+        }.attach()
+
     }
 
     private fun setHourlyForeCastData(hourly: ArrayList<Hourly>) {
@@ -138,7 +149,7 @@ class HomeActivity : AppCompatActivity() {
             binding.activityHomeCurrentSunsetTimeTv.text = applicationContext.getString(R.string.sunset_at) + " " +  Constants.unixToTimeConvert(current.sunset.toString())
             //Picasso.get().load(Constants.getImageApiUrl("01n")).into(binding.activityHomeCurrentSunsetIconIv);
 
-            binding.activityHomeCurrentDateTv.text = Constants.unixToTimeConvert(current.dt.toString())
+            binding.activityHomeCurrentDateTv.text = current.dt?.let { Constants.unixToDateConvertFullDate(it) }
 
             if (imageUrl != null){
                 Log.v("imageUrl", imageUrl);

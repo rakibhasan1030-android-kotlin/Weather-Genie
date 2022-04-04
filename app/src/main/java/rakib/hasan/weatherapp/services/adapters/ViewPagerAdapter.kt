@@ -28,7 +28,7 @@ class ViewPagerAdapter(private val context: Context, private val dailyList: Arra
     override fun onBindViewHolder(holder: ViewPagerAdapter.ViewPagerViewHolder, position: Int) {
         val daily: Daily = dailyList[position]
         Picasso.get().load(daily.weather[0].icon?.let { Constants.getImageApiUrl(it) }).into(holder.tempIv)
-        holder.tempTv.text = daily.temp?.max?.roundToInt()?.toString() + context.applicationContext.resources.getString(R.string.degree_celsius)
+        holder.tempTv.text = daily.temp?.min?.roundToInt()?.toString() + context.applicationContext.resources.getString(R.string.degree_celsius) + " / "+ daily.temp?.max?.roundToInt()?.toString() + context.applicationContext.resources.getString(R.string.degree_celsius)
         holder.tempMainTv.text = daily.weather[0].main
         holder.tempDescriptionTv.text = daily.weather[0].description
         holder.windTv.text =
