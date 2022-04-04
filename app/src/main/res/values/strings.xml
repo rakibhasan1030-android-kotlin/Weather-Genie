@@ -35,6 +35,10 @@
     <string name="dhaka_division">Dhaka Division</string>
     <string name="sunrise_at">Sunrise at</string>
     <string name="sunset_at">Sunset at</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
+    <string name="_5_47_am">5:47 AM</string>
+    <string name="_6_14_pm">6:14 PM</string>
 
 
 </resources>

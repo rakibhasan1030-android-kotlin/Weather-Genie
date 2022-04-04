@@ -3,8 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="16dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/vp_item_home_daily_forecast_temp_container"
@@ -217,54 +220,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
-        android:id="@+id/vp_item_home_daily_forecast_separator_five"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/shadow_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_pressure_container" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/vp_item_home_daily_forecast_visibility_container"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/vp_item_home_daily_forecast_separator_five"
-        app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_separator_five"
-        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_separator_five">
-
-        <TextView
-            android:id="@+id/vp_item_home_daily_forecast_visibility_header_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="@string/visibility"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/vp_item_home_daily_forecast_visibility_value_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/visibility_value"
-            app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_visibility_header_tv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_visibility_header_tv" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
         android:id="@+id/vp_item_home_daily_forecast_separator_six"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
         android:background="@color/shadow_gray"
-        app:layout_constraintEnd_toEndOf="@+id/vp_item_home_daily_forecast_visibility_container"
-        app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_visibility_container"
-        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_visibility_container" />
+        app:layout_constraintEnd_toEndOf="@+id/vp_item_home_daily_forecast_pressure_container"
+        app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_pressure_container"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_pressure_container" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/vp_item_home_daily_forecast_dew_point_container"
@@ -281,7 +244,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/dew_point"
+            android:text="@string/dew_point_"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -294,6 +257,88 @@
             app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_dew_point_header_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_dew_point_header_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/vp_item_home_daily_forecast_separator_seven"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/shadow_gray"
+        app:layout_constraintEnd_toEndOf="@+id/vp_item_home_daily_forecast_dew_point_container"
+        app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_dew_point_container"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_dew_point_container" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vp_item_home_daily_forecast_sunrise_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/vp_item_home_daily_forecast_separator_seven"
+        app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_separator_seven"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_separator_seven">
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_sunrise_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/sunrise"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_sunrise_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_5_47_am"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_sunrise_header_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_sunrise_header_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/vp_item_home_daily_forecast_separator_eight"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/shadow_gray"
+        app:layout_constraintEnd_toEndOf="@+id/vp_item_home_daily_forecast_sunrise_container"
+        app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_sunrise_container"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_sunrise_container" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vp_item_home_daily_forecast_sunset_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/vp_item_home_daily_forecast_separator_eight"
+        app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_separator_eight"
+        app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_separator_eight">
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_sunset_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/sunset"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/vp_item_home_daily_forecast_sunset_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_6_14_pm"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_sunset_header_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_sunset_header_tv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

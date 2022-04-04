@@ -15,12 +15,14 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.squareup.picasso.Picasso
 import rakib.hasan.weatherapp.R
 import rakib.hasan.weatherapp.databinding.ActivityHomeBinding
 import rakib.hasan.weatherapp.services.adapters.HourlyRvAdapter
+import rakib.hasan.weatherapp.services.adapters.ViewPagerAdapter
 import rakib.hasan.weatherapp.services.model.Current
 import rakib.hasan.weatherapp.services.model.Daily
 import rakib.hasan.weatherapp.services.model.Hourly
@@ -28,7 +30,6 @@ import rakib.hasan.weatherapp.services.utils.Constants
 import rakib.hasan.weatherapp.viewModel.HomeActivityViewModel
 import java.text.DecimalFormat
 import kotlin.math.roundToInt
-
 
 class HomeActivity : AppCompatActivity() {
 
@@ -115,6 +116,9 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setDailyForeCastData(daily: ArrayList<Daily>) {
         //Constants.unixDateConvert("")
+        val viewPagerAdapter = ViewPagerAdapter(applicationContext, daily)
+        binding.activityHomeDailyForecastViewpager2.adapter = viewPagerAdapter
+        binding.activityHomeDailyForecastViewpager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
     }
 
     private fun setHourlyForeCastData(hourly: ArrayList<Hourly>) {
@@ -129,7 +133,7 @@ class HomeActivity : AppCompatActivity() {
             val imageUrl : String? = current.weather[0].icon?.let { Constants.getImageApiUrl(it) };
 
             binding.activityHomeCurrentDateTv.text = Constants.unixToTimeConvert(current.dt.toString())
-            binding.activityHomeCurrentSunriseTimeTv.text =applicationContext.getString(R.string.sunrise_at) + " " +   Constants.unixToTimeConvert(current.sunrise.toString())
+            binding.activityHomeCurrentSunriseTimeTv.text = applicationContext.getString(R.string.sunrise_at) + " " +   Constants.unixToTimeConvert(current.sunrise.toString())
             //Picasso.get().load(Constants.getImageApiUrl("01d")).into(binding.activityHomeCurrentSunriseIconIv);
             binding.activityHomeCurrentSunsetTimeTv.text = applicationContext.getString(R.string.sunset_at) + " " +  Constants.unixToTimeConvert(current.sunset.toString())
             //Picasso.get().load(Constants.getImageApiUrl("01n")).into(binding.activityHomeCurrentSunsetIconIv);
@@ -180,19 +184,12 @@ class HomeActivity : AppCompatActivity() {
                 binding.activityHomeCurrentUvIndexValueTv.text = uvi
             }else binding.activityHomeCurrentUvIndexContainer.visibility = View.GONE
 
-            val p : Int? = (current.pressure?.times(0.02953))?.roundToInt() //1 hpa = 0.02953 inhg
-            val df = DecimalFormat("#.##")
-            val pressure = df.format(p).toString()
-            binding.activityHomeCurrentPressureContainer.visibility = View.VISIBLE
-            binding.activityHomeCurrentPressureValueTv.text = pressure + applicationContext.getString(R.string.pressure_unit)
 
-            val visibility : String = ((current.visibility?.div(1.609))?.div(1000))?.roundToInt().toString() // 1 mi = 1.609 km
-            binding.activityHomeCurrentVisibilityContainer.visibility = View.VISIBLE
-            binding.activityHomeCurrentVisibilityValueTv.text = visibility + applicationContext.getString(R.string.visibility_unit)
+            binding.activityHomeCurrentPressureValueTv.text = Constants.getFormattedPressure(current.pressure) + applicationContext.getString(R.string.pressure_unit)
 
-            val dewPoint : String? = current.dewPoint?.roundToInt()?.toString()
-            binding.activityHomeCurrentDewPointContainer.visibility = View.VISIBLE
-            binding.activityHomeCurrentDewPointValueTv.text = dewPoint + applicationContext.getString(R.string.degree_celsius)
+            binding.activityHomeCurrentVisibilityValueTv.text = Constants.getFormattedVisibility(current.visibility) + applicationContext.getString(R.string.visibility_unit)
+
+            binding.activityHomeCurrentDewPointValueTv.text = current.dewPoint?.roundToInt()?.toString() + applicationContext.getString(R.string.degree_celsius)
         }
     }
 

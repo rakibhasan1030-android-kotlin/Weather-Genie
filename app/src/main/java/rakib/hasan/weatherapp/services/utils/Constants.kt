@@ -4,8 +4,10 @@ import android.content.Context
 import android.location.Address
 import android.location.Geocoder
 import android.util.Log
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.roundToInt
 
 class Constants {
 
@@ -22,11 +24,11 @@ class Constants {
         private const val WEATHER_API_IMAGE_BASE_URL = "https://openweathermap.org/"
         private const val WEATHER_API_KEY = "3d6c443f18312d21ac8146de13fc5c98"
 
-        fun getApiUrl(latitude:Double, longitude : Double) : String{
+        public fun getApiUrl(latitude:Double, longitude : Double) : String{
             return "$WEATHER_API_BASE_URL/data/2.5/onecall?lat=$latitude&lon=$longitude&appid=$WEATHER_API_KEY&units=metric"
         }
 
-        fun getImageApiUrl(iconCode : String) : String{
+        public fun getImageApiUrl(iconCode : String) : String{
             return "$WEATHER_API_IMAGE_BASE_URL/img/wn/$iconCode@2x.png"
         }
 
@@ -56,10 +58,21 @@ class Constants {
             val sdf = SimpleDateFormat("dd/MMM/yyyy")
             return sdf.format(d);
         }
+
         public fun unixToTimeConvert(date : String) : String{
             val d = Date(date.toLong() * 1000)
             val sdf = SimpleDateFormat("hh:mm a")
             return sdf.format(d);
+        }
+
+        public fun getFormattedPressure(pressure: Int?) : String{
+            val p : Int? = (pressure?.times(0.02953))?.roundToInt() //1 hpa = 0.02953 inhg
+            val df = DecimalFormat("#.##")
+            return df.format(p).toString()
+        }
+
+        public fun getFormattedVisibility(visibility: Int?) : String{
+            return ((visibility?.div(1.609))?.div(1000))?.roundToInt().toString() // 1 mi = 1.609 km
         }
 
 
