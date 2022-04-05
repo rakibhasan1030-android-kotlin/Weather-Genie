@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WeatherApp</string>
+    <string name="app_name">Weather Genie</string>
     <string name="hit_the_weather">Hit The Weather</string>
 
     <string name="degree_celsius">℃</string>
