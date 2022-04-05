@@ -26,7 +26,7 @@ class HomeActivityRepository constructor(context: Context){
                 weatherInfoLiveData.postValue(weatherInfo)
             },
             { error ->
-                var errorResponse = String(error.networkResponse.data, StandardCharsets.UTF_8)
+                //var errorResponse = String(error.networkResponse.data, StandardCharsets.UTF_8)
                 Log.v(TAG, "Error Response : $error")
             }
         )

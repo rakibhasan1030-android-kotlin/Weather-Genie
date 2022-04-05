@@ -3,15 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/WeatherApp/app/src/main/res/drawable/circle_transparent_with_border_ripple.xml" value="0.229" />
         <entry key="..\:/WeatherApp/app/src/main/res/drawable/ic_sunrise_icon.xml" value="0.3095" />
         <entry key="..\:/WeatherApp/app/src/main/res/drawable/ic_sunset_icon.xml" value="0.3095" />
         <entry key="..\:/WeatherApp/app/src/main/res/drawable/rect_with_border.xml" value="0.3095" />
         <entry key="..\:/WeatherApp/app/src/main/res/drawable/tab_background.xml" value="0.3095" />
         <entry key="..\:/WeatherApp/app/src/main/res/drawable/tab_background_selecterd.xml" value="0.3095" />
         <entry key="..\:/WeatherApp/app/src/main/res/drawable/tab_text_selector.xml" value="0.3095" />
-        <entry key="..\:/WeatherApp/app/src/main/res/layout/activity_home.xml" value="0.34479166666666666" />
+        <entry key="..\:/WeatherApp/app/src/main/res/layout/activity_home.xml" value="0.2298611111111111" />
         <entry key="..\:/WeatherApp/app/src/main/res/layout/activity_home_tab_title.xml" value="0.34479166666666666" />
         <entry key="..\:/WeatherApp/app/src/main/res/layout/activity_main.xml" value="0.3307291666666667" />
+        <entry key="..\:/WeatherApp/app/src/main/res/layout/activity_splash.xml" value="0.34479166666666666" />
+        <entry key="..\:/WeatherApp/app/src/main/res/layout/dialog_no_internet_connection.xml" value="0.2298611111111111" />
+        <entry key="..\:/WeatherApp/app/src/main/res/layout/dialog_weather_data_fetching.xml" value="0.34479166666666666" />
         <entry key="..\:/WeatherApp/app/src/main/res/layout/rv_item_home_hourly_forecast.xml" value="0.34479166666666666" />
         <entry key="..\:/WeatherApp/app/src/main/res/layout/rv_item_hourly.xml" value="0.34479166666666666" />
         <entry key="..\:/WeatherApp/app/src/main/res/layout/view_pager_item_home_daily_forecast.xml" value="0.34479166666666666" />

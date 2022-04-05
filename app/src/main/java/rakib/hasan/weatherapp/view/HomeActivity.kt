@@ -1,22 +1,31 @@
 package rakib.hasan.weatherapp.view
 
+import android.app.AlertDialog
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
+import android.net.ConnectivityManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.provider.Settings
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
+import android.view.WindowManager
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.tabs.TabLayoutMediator
@@ -25,6 +34,8 @@ import rakib.hasan.weatherapp.R
 import rakib.hasan.weatherapp.databinding.ActivityHomeBinding
 import rakib.hasan.weatherapp.services.adapters.HourlyRvAdapter
 import rakib.hasan.weatherapp.services.adapters.ViewPagerAdapter
+import rakib.hasan.weatherapp.services.internet.NetworkChangeReceiver
+import rakib.hasan.weatherapp.services.internet.NoInternetListener
 import rakib.hasan.weatherapp.services.model.Current
 import rakib.hasan.weatherapp.services.model.Daily
 import rakib.hasan.weatherapp.services.model.Hourly
@@ -33,12 +44,13 @@ import rakib.hasan.weatherapp.viewModel.HomeActivityViewModel
 import kotlin.math.roundToInt
 
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), NoInternetListener {
 
     private lateinit var binding: ActivityHomeBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationManager: LocationManager
     private lateinit var homeActivityViewModel: HomeActivityViewModel
+    private lateinit var broadcastReceiver: BroadcastReceiver
 
     companion object {
         private const val PERMISSION_REQUEST_ACCESS_LOCATION = 100
@@ -52,13 +64,29 @@ class HomeActivity : AppCompatActivity() {
         }
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        broadcastReceiver = NetworkChangeReceiver()
+        registerReceiver(broadcastReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        getUserCurrentLocation()
-        //binding.homeActivityWeatherCallButton.setOnClickListener(View.OnClickListener { getUserCurrentLocation() })
         homeActivityViewModel = ViewModelProvider(this)[HomeActivityViewModel::class.java]
-
+        getUserCurrentLocation()
         binding.activityHomeSwipeRefreshLayout.setOnRefreshListener { refreshPage() }
+    }
 
+    override fun noInternet(b: Boolean) {
+        if(!b){
+            binding.activityHomeCurrentWeatherOthersInfoContainer.visibility = View.GONE
+            binding.activityHomeCurrentSunriseIconIv.visibility = View.GONE
+            binding.activityHomeCurrentSunsetIconIv.visibility = View.GONE
+            binding.activityHomeSwipeRefreshLayout.visibility = View.GONE
+            binding.activityHomeLocationIv.visibility = View.GONE
+            showNoInternetDialog()
+        }else{
+            binding.activityHomeCurrentWeatherOthersInfoContainer.visibility = View.VISIBLE
+            binding.activityHomeCurrentSunriseIconIv.visibility = View.VISIBLE
+            binding.activityHomeCurrentSunsetIconIv.visibility = View.VISIBLE
+            binding.activityHomeSwipeRefreshLayout.visibility = View.VISIBLE
+            binding.activityHomeLocationIv.visibility = View.VISIBLE
+        }
     }
 
     private fun getUserCurrentLocation() {
@@ -165,23 +193,20 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setCurrentWeatherData(current: Current?) {
         if (current != null) {
+
+            binding.activityHomeCurrentWeatherOthersInfoContainer.visibility = View.VISIBLE
+            binding.activityHomeCurrentSunriseIconIv.visibility = View.VISIBLE
+            binding.activityHomeCurrentSunsetIconIv.visibility = View.VISIBLE
+
             val imageUrl: String? = current.weather[0].icon?.let { Constants.getImageApiUrl(it) }
 
-            binding.activityHomeCurrentDateTv.text =
-                Constants.unixToTimeConvert(current.dt.toString())
-            binding.activityHomeCurrentSunriseTimeTv.text =
-                applicationContext.getString(R.string.sunrise_at) + " " + Constants.unixToTimeConvert(
-                    current.sunrise.toString()
-                )
-            //Picasso.get().load(Constants.getImageApiUrl("01d")).into(binding.activityHomeCurrentSunriseIconIv);
-            binding.activityHomeCurrentSunsetTimeTv.text =
-                applicationContext.getString(R.string.sunset_at) + " " + Constants.unixToTimeConvert(
-                    current.sunset.toString()
-                )
-            //Picasso.get().load(Constants.getImageApiUrl("01n")).into(binding.activityHomeCurrentSunsetIconIv);
+            binding.activityHomeCurrentDateTv.text = Constants.unixToTimeConvert(current.dt.toString())
 
-            binding.activityHomeCurrentDateTv.text =
-                current.dt?.let { Constants.unixToDateConvertFullDate(it) }
+            binding.activityHomeCurrentSunriseTimeTv.text = applicationContext.getString(R.string.sunrise_at) + " " + Constants.unixToTimeConvert(current.sunrise.toString())
+
+            binding.activityHomeCurrentSunsetTimeTv.text =applicationContext.getString(R.string.sunset_at) + " " + Constants.unixToTimeConvert(current.sunset.toString())
+
+            binding.activityHomeCurrentDateTv.text = current.dt?.let { Constants.unixToDateConvertFullDate(it) }
 
             if (imageUrl != null) {
                 Log.v("imageUrl", imageUrl)
@@ -196,7 +221,7 @@ class HomeActivity : AppCompatActivity() {
                 binding.activityHomeCurrentWeatherMainTv.visibility = View.VISIBLE
                 binding.activityHomeCurrentWeatherMainTv.text = mainWeather
             } else binding.activityHomeCurrentWeatherMainTv.visibility = View.GONE
-//
+
             val currentTemp: String? = current.temp?.roundToInt()?.toString()
             if (currentTemp != null) {
                 binding.activityHomeCurrentTempTv.visibility = View.VISIBLE
@@ -232,17 +257,13 @@ class HomeActivity : AppCompatActivity() {
                 binding.activityHomeCurrentUvIndexValueTv.text = uvi
             } else binding.activityHomeCurrentUvIndexContainer.visibility = View.GONE
 
+            binding.activityHomeCurrentPressureValueTv.text = Constants.getFormattedPressure(current.pressure) + applicationContext.getString(R.string.pressure_unit)
 
-            binding.activityHomeCurrentPressureValueTv.text =
-                Constants.getFormattedPressure(current.pressure) + applicationContext.getString(R.string.pressure_unit)
-
-            binding.activityHomeCurrentVisibilityValueTv.text =
-                Constants.getFormattedVisibility(current.visibility) + applicationContext.getString(
+            binding.activityHomeCurrentVisibilityValueTv.text = Constants.getFormattedVisibility(current.visibility) + applicationContext.getString(
                     R.string.visibility_unit
                 )
 
-            binding.activityHomeCurrentDewPointValueTv.text = current.dewPoint?.roundToInt()
-                ?.toString() + applicationContext.getString(R.string.degree_celsius)
+            binding.activityHomeCurrentDewPointValueTv.text = current.dewPoint?.roundToInt()?.toString() + applicationContext.getString(R.string.degree_celsius)
         }
     }
 
@@ -303,4 +324,17 @@ class HomeActivity : AppCompatActivity() {
         super.onPause()
         overridePendingTransition(0, 0);
     }
+
+    private fun showNoInternetDialog() {
+        val builder = AlertDialog.Builder(this, R.style.myFullscreenAlertDialogStyle)
+        val dialogView: View = LayoutInflater.from(this).inflate(R.layout.dialog_no_internet_connection, null)
+        builder.setView(dialogView)
+        val alertDialog = builder.create()
+        val refreshLayout : LinearLayout = dialogView.findViewById(R.id.dialog_no_internet_connection_refresh_container)
+        refreshLayout.setOnClickListener(View.OnClickListener { refreshPage() })
+        //alertDialog.window!!.setBackgroundDrawableResource(android.R.color.transparent)
+        alertDialog.setCancelable(false)
+        alertDialog.show()
+    }
+
 }

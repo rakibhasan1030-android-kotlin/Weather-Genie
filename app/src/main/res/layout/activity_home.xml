@@ -45,6 +45,7 @@
                             android:id="@+id/activity_home_location_iv"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
+                            android:src="@drawable/ic_outline_location_on_24"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -171,6 +172,7 @@
                         android:id="@+id/activity_home_current_sunrise_icon_iv"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:visibility="gone"
                         android:src="@drawable/ic_sunrise_icon"
                         app:layout_constraintBottom_toTopOf="@+id/activity_home_current_sunrise_time_tv"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -201,6 +203,7 @@
                         android:id="@+id/activity_home_current_sunset_icon_iv"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:visibility="gone"
                         android:src="@drawable/ic_sunset_icon"
                         app:layout_constraintBottom_toTopOf="@+id/activity_home_current_sunset_time_tv"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -227,6 +230,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:elevation="8dp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
