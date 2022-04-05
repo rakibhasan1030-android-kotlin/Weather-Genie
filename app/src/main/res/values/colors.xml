@@ -12,5 +12,7 @@
     <color name="gray">#808080</color>
     <color name="gainsboro">#dfdfdf</color>
     <color name="pink">#f53877</color>
+    <color name="transparent">#00000000</color>
+
 
 </resources>

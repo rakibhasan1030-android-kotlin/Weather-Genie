@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -31,6 +32,7 @@ import rakib.hasan.weatherapp.services.utils.Constants
 import rakib.hasan.weatherapp.viewModel.HomeActivityViewModel
 import kotlin.math.roundToInt
 
+
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
@@ -44,6 +46,10 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.decorView.windowInsetsController!!.hide(android.view.WindowInsets.Type.statusBars())
+            window.decorView.windowInsetsController!!.hide(android.view.WindowInsets.Type.statusBars() or android.view.WindowInsets.Type.navigationBars())
+        }
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
@@ -289,11 +295,12 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-
     private fun refreshPage() {
-        finish()
-        overridePendingTransition(0, 0)
-        startActivity(intent)
-        overridePendingTransition(0, 0)
+        this.startActivity(Intent(this, HomeActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+    }
+
+    override fun onPause() {
+        super.onPause()
+        overridePendingTransition(0, 0);
     }
 }

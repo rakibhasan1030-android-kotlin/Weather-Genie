@@ -28,7 +28,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="10dp"
+                    android:padding="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -45,7 +45,6 @@
                             android:id="@+id/activity_home_location_iv"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:src="@drawable/ic_outline_location_on_24"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -64,7 +63,6 @@
                                 android:id="@+id/activity_home_user_city_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/dhaka"
                                 android:fontFamily="@font/sf_pro_display_semi_bold"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
@@ -77,7 +75,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"
-                                android:text="@string/dhaka_division"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/sf_pro_display_semi_bold"
@@ -127,7 +124,6 @@
                         android:id="@+id/activity_home_current_weather_desc_iv"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/ic_outline_location_on_24"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -135,7 +131,6 @@
                         android:id="@+id/activity_home_current_weather_main_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Haze"
                         android:fontFamily="@font/sf_pro_display_regular"
                         app:layout_constraintBottom_toBottomOf="@+id/activity_home_current_weather_desc_iv"
                         app:layout_constraintStart_toEndOf="@+id/activity_home_current_weather_desc_iv"
@@ -147,7 +142,6 @@
                     android:id="@+id/activity_home_current_temp_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="95F"
                     android:textSize="75sp"
                     android:fontFamily="@font/sf_pro_display_bold"
                     app:layout_constraintBottom_toTopOf="@+id/activity_home_current_feels_like_temp_tv"
@@ -160,7 +154,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="Feels like 101F"
                     android:fontFamily="@font/sf_pro_display_regular"
                     app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -187,7 +180,6 @@
                         android:id="@+id/activity_home_current_sunrise_time_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/sunrise_at"
                         android:textSize="12sp"
                         android:fontFamily="@font/sf_pro_display_regular"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -218,7 +210,6 @@
                         android:id="@+id/activity_home_current_sunset_time_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/sunset_at"
                         android:textSize="12sp"
                         android:fontFamily="@font/sf_pro_display_regular"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -280,7 +271,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"
-                                android:text="@string/wind_value"
                                 android:textSize="12sp"
                                 android:fontFamily="@font/sf_pro_display_semi_bold"
                                 />
@@ -308,7 +298,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"
-                                android:text="@string/humidity_value"
                                 android:textSize="12sp"
                                 android:fontFamily="@font/sf_pro_display_semi_bold"
                                 />
@@ -336,7 +325,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"
-                                android:text="@string/uv_index_value"
                                 android:textSize="12sp"
                                 android:fontFamily="@font/sf_pro_display_semi_bold"
                                 />
@@ -378,7 +366,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"
-                                android:text="@string/pressure_value"
                                 android:textSize="12sp"
                                 android:fontFamily="@font/sf_pro_display_semi_bold"
                                 />
@@ -405,7 +392,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"
-                                android:text="@string/visibility_value"
                                 android:textSize="12sp"
                                 android:fontFamily="@font/sf_pro_display_semi_bold"
                                 />
@@ -432,7 +418,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"
-                                android:text="@string/dew_point_value"
                                 android:textSize="12sp"
                                 android:fontFamily="@font/sf_pro_display_semi_bold"
                                 />
