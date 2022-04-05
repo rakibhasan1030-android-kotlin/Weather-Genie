@@ -22,6 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Haze"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,6 +33,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Haze"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintStart_toStartOf="@+id/vp_item_home_daily_forecast_weather_main_tv"
             app:layout_constraintTop_toBottomOf="@+id/vp_item_home_daily_forecast_weather_main_tv" />
 
@@ -38,7 +42,6 @@
             android:id="@+id/vp_item_home_daily_forecast_weather_description_iv"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_weather_temp_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_weather_temp_tv" />
@@ -49,6 +52,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:text="65F"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_weather_description_tv"
             app:layout_constraintEnd_toStartOf="@+id/vp_item_home_daily_forecast_weather_description_iv"
             app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_weather_main_tv" />
@@ -81,6 +86,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/wind_"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -90,6 +97,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/wind_value"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_wind_header_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_wind_header_tv" />
@@ -122,6 +131,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/humidity_"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -131,6 +142,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/humidity_value"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_humidity_header_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_humidity_header_tv" />
@@ -163,6 +176,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/uv_index_"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -172,6 +187,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/uv_index_value"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_uv_index_header_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_uv_index_header_tv" />
@@ -204,6 +221,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/pressure_"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -213,6 +232,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pressure_value"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_pressure_header_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_pressure_header_tv" />
@@ -245,6 +266,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/dew_point_"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -254,6 +277,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dew_point_value"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_dew_point_header_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_dew_point_header_tv" />
@@ -286,6 +311,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/sunrise"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -295,6 +322,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_5_47_am"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_sunrise_header_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_sunrise_header_tv" />
@@ -327,6 +356,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/sunset"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -336,6 +367,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_6_14_pm"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
             app:layout_constraintBottom_toBottomOf="@+id/vp_item_home_daily_forecast_sunset_header_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/vp_item_home_daily_forecast_sunset_header_tv" />

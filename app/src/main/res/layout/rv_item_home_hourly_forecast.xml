@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/rv_item_hourly_icon"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/ic_outline_location_on_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,6 +43,8 @@
                     android:id="@+id/rv_item_hourly_time_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:textSize="11sp"
                     android:text="2PM" />
 
             </LinearLayout>
@@ -58,6 +60,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:textSize="11sp"
                     android:text="2PM" />
 
             </LinearLayout>
@@ -73,6 +77,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:textSize="11sp"
                     android:text="2PM" />
 
             </LinearLayout>
@@ -86,8 +92,10 @@
                 <TextView
                     android:id="@+id/rv_item_hourly_weather_description_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="2dp"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:textSize="11sp"
                     android:text="2PM" />
 
             </LinearLayout>
