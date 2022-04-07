@@ -168,7 +168,6 @@ class HomeActivity : AppCompatActivity(), NoInternetListener {
     }
 
     private fun setDailyForeCastData(daily: ArrayList<Daily>) {
-        //Constants.unixDateConvert("")
         val viewPagerAdapter = ViewPagerAdapter(applicationContext, daily)
         binding.activityHomeDailyForecastViewpager2.adapter = viewPagerAdapter
         binding.activityHomeDailyForecastViewpager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
