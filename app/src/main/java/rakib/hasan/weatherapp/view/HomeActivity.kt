@@ -43,7 +43,6 @@ import rakib.hasan.weatherapp.services.utils.Constants
 import rakib.hasan.weatherapp.viewModel.HomeActivityViewModel
 import kotlin.math.roundToInt
 
-
 class HomeActivity : AppCompatActivity(), NoInternetListener {
 
     private lateinit var binding: ActivityHomeBinding

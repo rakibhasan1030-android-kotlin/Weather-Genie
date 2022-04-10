@@ -10,7 +10,6 @@ data class WeatherInfo (
     @SerializedName("timezone"        ) var timezone       : String?             = null,
     @SerializedName("timezone_offset" ) var timezoneOffset : Int?                = null,
     @SerializedName("current"         ) var current        : Current?            = Current(),
-    @SerializedName("minutely"        ) var minutely       : ArrayList<Minutely> = arrayListOf(),
     @SerializedName("hourly"          ) var hourly         : ArrayList<Hourly>   = arrayListOf(),
     @SerializedName("daily"           ) var daily          : ArrayList<Daily>    = arrayListOf()
 
