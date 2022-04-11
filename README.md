@@ -33,7 +33,7 @@
 
 ## Avaiable on
 
-<a href="https://play.google.com/store/apps/details?id=com.rakib.notesmvvmarchitecture" > <img src="images/play_store.png" width="180" height="100" /></a>
+<a href="https://play.google.com/store/apps/details?id=rakib.hasan.weatherapp" > <img src="images/play_store.png" width="180" height="100" /></a>
 
 
 ## Feedback
