@@ -19,7 +19,7 @@
 
 ## Tech Stack
 
-**Client:** Android
+**API:** [OpenWeather](https://openweathermap.org/api)
 
 **Database:** Room
 
@@ -28,7 +28,7 @@
 
 ## Authors
 
-- [@RakibHasan](https://www.github.com/rakibhasan1030)
+- [Rakib Hasan](https://www.github.com/rakibhasan1030)
 
 
 ## Avaiable on
