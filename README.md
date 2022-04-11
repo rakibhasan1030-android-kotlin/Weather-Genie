@@ -21,8 +21,6 @@
 
 **API:** [OpenWeather](https://openweathermap.org/api)
 
-**Database:** Room
-
 **Architecture:** Model–view–viewmodel (MVVM)
 
 
