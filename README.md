@@ -1,7 +1,7 @@
 <table>
   <tr>
     <td align="center">
-      <a href="https://youtu.be/Ab5kqu_JeNQ" > <img src="https://lh3.googleusercontent.com/sXQzNQStlYr72pd20k1XUtn17xOCD8gEf_j0sIrfTzs2wip9ogV3C9S7npq_Hga_d0mE"/></a> 
+      <a href="" > <img src="https://play-lh.googleusercontent.com/sXQzNQStlYr72pd20k1XUtn17xOCD8gEf_j0sIrfTzs2wip9ogV3C9S7npq_Hga_d0mE=s180-rw"/></a> 
     </td>
     <td> <h1>Weather Genie</h1> A scientific yet simple approach to weather forecast. 
       Weather Genie App can tell you, which part of the day is going to have a clear sky and light breeze perfect for a run or bike ride for 7 days ahead.<br></br>
