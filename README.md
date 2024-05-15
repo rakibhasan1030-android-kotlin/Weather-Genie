@@ -15,7 +15,7 @@
 - Ad-free & free-to-use.
 
 ## Screenshots
-<img src="images/home_ss.png" width=190> <img src="images/add_note.png" width=190> <img src="images/swipe_to _delete_left.png" width=190> <img src="images/swipe_to _delete_right.png" width=190> <img src="images/delete_all_notes.png" width=190>
+<img src="images/1.webp" width=190> <img src="images/2.webp" width=190> <img src="images/3.webp" width=190> <img src="images/4.webp" width=190>
 
 ## Tech Stack
 
